@@ -107,6 +107,15 @@ class Adafruit_I2C(object):
     except IOError, err:
       return self.errMsg()
 
+  def readRaw8(self):
+    "Reads an 8-bit value from the I2C device"
+    try:
+      result = self.bus.read_byte(self.address)
+      if self.debug:
+        print "I2C: Read 0x%02X" % result
+    except IOError, err:
+      return self.errMsg()
+
   def readU8(self, reg):
     "Read an unsigned byte from the I2C device"
     try:
